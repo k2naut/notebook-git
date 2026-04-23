@@ -2,11 +2,22 @@
 
 ## Tổng quan
 
+|Vùng|Vị trí|Lưu ở đâu|
+|-|-|-|
+|Working Directory|Thư mục project trên ổ đĩa|Files bình thường, bạn edit trực tiếp|
+|Staging Area|Bên trong **_index_**|File nhị phân, quản lý bởi Git|
+|Local Repository|Bên trong **_objects_**|Commit history, branches, tags|
+|Remote Repository|Server (GitHub, GitLab...)|Trên internet / mạng nội bộ|
+
 ```
-Working Directory  →  [git add]   →  Staging Area (Index)
-Staging Area       →  [git commit] →  Local Repository
-Local Repository   →  [git push]  →  Remote Repository
-Remote Repository  →  [git pull / fetch + merge] → Local
+[Máy local của bạn]
+├── Working Directory   ← bạn nhìn thấy, edit được
+├── .git/
+│   ├── index          ← Staging Area
+│   └── objects/       ← Local Repo (commits, trees, blobs)
+│
+[Remote Server]
+└── Remote Repo        ← GitHub / GitLab / Bitbucket
 ```
 ## Git Commands Flow
 
