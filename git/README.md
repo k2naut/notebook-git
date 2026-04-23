@@ -8,7 +8,48 @@ Staging Area       →  [git commit] →  Local Repository
 Local Repository   →  [git push]  →  Remote Repository
 Remote Repository  →  [git pull / fetch + merge] → Local
 ```
+## Sơ đồ lệnh chính
 
+```
+┌─────────────────┐        ┌─────────────────┐        ┌─────────────────┐        ┌─────────────────┐
+│  Working        │        │  Staging Area   │        │  Local Repo     │        │  Remote Repo    │
+│  Directory      │        │  (Index)        │        │                 │        │                 │
+└────────┬────────┘        └────────┬────────┘        └────────┬────────┘        └────────┬────────┘
+         │                          │                          │                          │
+         │  git add <file>          │                          │                          │
+         │ ────────────────────────>│                          │                          │
+         │                          │                          │                          │
+         │  git restore <file>      │                          │                          │
+         │ <────────────────────────│                          │                          │
+         │                          │                          │                          │
+         │                          │  git commit -m "..."     │                          │
+         │                          │ ────────────────────────>│                          │
+         │                          │                          │                          │
+         │                          │  git reset --soft HEAD~1 │                          │
+         │                          │ <────────────────────────│                          │
+         │                          │                          │                          │
+         │  git reset --mixed HEAD~1│                          │                          │
+         │ <────────────────────────│──────────────────────────│                          │
+         │                          │                          │                          │
+         │  git reset --hard HEAD~1 │                          │                          │
+         │ <─────────────────────────────────────────────────  │                          │
+         │                          │                          │                          │
+         │                          │                          │  git push                │
+         │                          │                          │ ────────────────────────>│
+         │                          │                          │                          │
+         │                          │                          │  git fetch               │
+         │                          │                          │ <────────────────────────│
+         │                          │                          │                          │
+         │  git pull (fetch+merge)  │                          │                          │
+         │ <─────────────────────────────────────────────────────────────────────────────│
+         │                          │                          │                          │
+         │  git clone               │                          │                          │
+         │ <─────────────────────────────────────────────────────────────────────────────│
+         │                          │                          │                          │
+         │  git stash               │                          │                          │
+         │ ──────>  stash stack  <──│ (lưu cả staged lẫn unstaged, restore khi git stash pop)
+         │                          │                          │                          │
+```
 ---
 
 ## Files trong folder này
