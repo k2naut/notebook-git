@@ -1,0 +1,72 @@
+```plantuml
+@startuml Git Commands Flow
+skinparam sequenceArrowThickness 2
+skinparam sequenceBoxBorderColor #555
+skinparam participantBackgroundColor #FEFEFE
+skinparam participantBorderColor #555
+skinparam sequenceArrowColor #333
+
+participant "Working\nDirectory" as WD #LightYellow
+participant "Staging Area\n(Index)" as SA #LightBlue
+participant "Local Repo" as LR #LightGreen
+participant "Remote Repo" as RR #LightPink
+
+== Staging ==
+WD -> SA : git add <file>
+WD -> SA : git add .
+SA -> WD : git restore <file
+SA -> WD : git checkout -- <file>
+
+== Committing ==
+SA -> LR : git commit -m "message"
+SA -> LR : git commit --amend
+LR -> SA : git reset --soft HEAD~1
+
+== Reset (Undo) ==
+LR -> WD  : git reset --hard HEAD~1
+LR --> SA : git reset --mixed HEAD~1
+LR -> WD  : git checkout <hash> -- <file>
+
+== Revert (Safe Undo) ==
+LR -> LR  : git revert <hash>
+
+== Stash ==
+WD -> WD  : git stash         (lưu WD + SA vào stash stack)
+SA -> WD  : git stash         (staged cũng bị stash)
+WD -> WD  : git stash pop     (khôi phục + xóa stash)
+WD -> WD  : git stash apply   (khôi phục, giữ stash)
+WD -> WD  : git stash list    (xem danh sách stash)
+
+== Remote: Push / Fetch / Pull ==
+LR -> RR  : git push
+LR -> RR  : git push -u origin <branch>
+LR -> RR  : git push --force-with-lease
+RR -> LR  : git fetch
+RR -> WD  : git pull  (= fetch + merge)
+RR -> LR  : git pull --rebase (= fetch + rebase)
+
+== Clone / Init ==
+RR -> WD  : git clone <url>
+WD -> LR  : git init
+
+== Cherry-pick / Rebase ==
+LR -> LR  : git cherry-pick <hash>
+LR -> LR  : git rebase <branch>
+LR -> LR  : git rebase -i HEAD~N
+
+== Branching / Checkout ==
+LR -> WD  : git checkout <branch>         (switch sang branch có sẵn)
+LR -> WD  : git checkout -b <branch>      (tạo branch mới + switch)
+LR -> WD  : git switch <branch>           (switch branch - cách mới)
+LR -> WD  : git switch -c <branch>        (tạo + switch - cách mới)
+LR -> LR  : git branch <branch>           (tạo branch, không switch)
+LR -> LR  : git branch -d <branch>        (xóa branch đã merge)
+LR -> LR  : git branch -D <branch>        (force xóa branch)
+LR -> LR  : git branch -m <old> <new>     (đổi tên branch)
+LR -> LR  : git merge <branch>            (merge branch vào current)
+LR -> LR  : git merge --no-ff <branch>    (merge với merge commit)
+LR -> LR  : git merge --squash <branch>   (gộp thành 1 commit)
+RR -> LR  : git checkout -b <branch> origin/<branch>  (track remote branch)
+
+@enduml
+```
