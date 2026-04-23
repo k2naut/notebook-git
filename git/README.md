@@ -29,12 +29,13 @@
 
 | File | Nội dung |
 |------|---------|
-| [basics.md](basics.md) | init, clone, add, commit, status, log, diff |
-| [branching.md](branching.md) | branch, checkout, merge, rebase, cherry-pick |
-| [remote.md](remote.md) | remote, push, pull, fetch, tracking branches |
-| [undoing.md](undoing.md) | reset, revert, restore, stash, reflog |
-| [advanced.md](advanced.md) | rebase -i, bisect, worktree, submodule, hooks |
-| [workflow.md](workflow.md) | Git Flow, GitHub Flow, conventional commits |
+| [basics.md](basics.md) | [init/clone](basics.md#khởi-tạo), [add/commit/status](basics.md#staging--committing), [log](basics.md#log), [diff](basics.md#diff) |
+| [branching.md](branching.md) | [branch/checkout](branching.md#branch), [merge](branching.md#merge), [rebase](branching.md#rebase), [cherry-pick](branching.md#cherry-pick) |
+| [remote.md](remote.md) | [remote](remote.md#remote-setup), [push/pull](remote.md#push--pull), [fetch](remote.md#fetch), [tracking branches](remote.md#tracking-branches) |
+| [undoing.md](undoing.md) | [restore](undoing.md#git-restore----khôi-phục-file-git-223), [reset](undoing.md#git-reset----di-chuyển-head-thay-đổi-history), [revert](undoing.md#git-revert----undo-an-toàn-không-thay-đổi-history), [stash](undoing.md#git-stash----tạm-lưu-thay-đổi), [reflog](undoing.md#git-reflog----lịch-sử-đầy-đủ-cứu-data-đã-mất) |
+| [advanced.md](advanced.md) | [rebase -i](advanced.md#interactive-rebase----rewrite-history), [bisect](advanced.md#git-bisect----tìm-commit-gây-bug), [worktree](advanced.md#git-worktree----nhiều-working-directory), [submodule](advanced.md#git-submodule----repo-lồng-repo), [hooks](advanced.md#git-hooks----automation) |
+| [workflow.md](workflow.md) | [GitHub Flow](workflow.md#github-flow----đơn-giản-phổ-biến-nhất), [Git Flow](workflow.md#git-flow----nhiều-môi-trường), [conventional commits](workflow.md#conventional-commits) |
+| [concepts.md](concepts.md) | [HEAD](concepts.md#head), [branch](concepts.md#branch), [commit](concepts.md#commit), [index](concepts.md#index-staging-area), [ref](concepts.md#ref-reference), [reflog](concepts.md#reflog), [tag](concepts.md#tag), [object model](concepts.md#tree-blob-tag-git-objects) |
 
 ---
 
