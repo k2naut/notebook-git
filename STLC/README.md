@@ -1,0 +1,1 @@
+# Software Testing Life Cycle (STLC)
